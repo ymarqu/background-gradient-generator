@@ -41,7 +41,22 @@ p{
     font-family: 'Roboto', sans-serif;
     margin-bottom: 3em;
 }
-
+button{
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-family: 'Roboto', sans-serif;
+    background-color: aliceblue;
+    border: solid 2px aliceblue;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+button:hover{
+    transform: scale(1.2);
+}
+button:active{
+    transform: scale(0.8);
+}
 @media screen and (max-width: 650px) {
 
     h1{
