@@ -4,6 +4,7 @@ let leftColor = document.querySelector(".color1");
 let rightColor = document.querySelector(".color2");
 let btn = document.querySelector("button");
 let directionInput = document.querySelector("#direction");
+let directionText = document.querySelector(".direction")
 
 function getRandomColor(){
     var color = "";
@@ -31,10 +32,12 @@ function changeBackgroundColor(color,pos){
         colorInput[0].value = color;
         colorInput[1].value = pos;
     }
+    directionText.innerHTML = direction
 
 }
 function changeBackgroundDirection(direction){
     body.style.backgroundImage = `linear-gradient(${direction}, ${leftColor.innerHTML} , ${rightColor.innerHTML})`
+    directionText.innerHTML = direction;
 }
 
 //color input event listener get user input color
