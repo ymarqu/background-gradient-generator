@@ -19,23 +19,12 @@ function getRandomColor(){
 //Changes the background color based on user input
 function changeBackgroundColor(color,pos){
     let direction = directionInput.value;
-    if(pos === 'left'){
-        body.style.backgroundImage = `linear-gradient(${direction}, ${color} , ${rightColor.innerHTML})`
-        leftColor.innerHTML = color;
-    }else if(pos == 'right'){
-        body.style.backgroundImage = `linear-gradient(${direction}, ${leftColor.innerHTML} , ${color})`
-        rightColor.innerHTML = color;
-    }else{
-        body.style.backgroundImage = `linear-gradient(${direction}, ${color} , ${pos})`
-        leftColor.innerHTML = color;
-        rightColor.innerHTML = pos;
-        colorInput[0].value = color;
-        colorInput[1].value = pos;
-    }
+    body.style.backgroundImage = `linear-gradient(${direction}, ${colorInput[0].value} , ${colorInput[1].value})`
     directionText.innerHTML = direction
 
 }
-function changeBackgroundDirection(direction){
+function changeBackgroundDirection(){
+    let direction = directionInput.value;
     body.style.backgroundImage = `linear-gradient(${direction}, ${leftColor.innerHTML} , ${rightColor.innerHTML})`
     directionText.innerHTML = direction;
 }
@@ -43,21 +32,18 @@ function changeBackgroundDirection(direction){
 //color input event listener get user input color
 colorInput.forEach(color => {
     color.addEventListener('input', (e) => {
-        let newColor = e.target.value
-        let side = e.target.dataset.side
-        changeBackgroundColor(newColor, side);
+        changeBackgroundColor();
     });
 });
 
 //Button eventlistener triggers getRandomColor function
 btn.addEventListener('click', () => {
-    let firstColor = getRandomColor();
-    let secondColor = getRandomColor();
-    changeBackgroundColor(firstColor, secondColor)
+    colorInput[0].value = getRandomColor();
+    colorInput[1].value = getRandomColor();
+    changeBackgroundColor()
 })
 
 //Event listener for gradient direction
 directionInput.addEventListener('input', (e) => {
-    let newDirection = directionInput.value;
-    changeBackgroundDirection(newDirection)
+    changeBackgroundDirection()
 })
